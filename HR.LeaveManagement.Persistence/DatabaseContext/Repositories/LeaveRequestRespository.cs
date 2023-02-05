@@ -14,8 +14,29 @@ public class LeaveRequestRespository : GenericRepository<LeaveRequest>, ILeaveRe
         this._context = context;
     }
 
-    public async Task<bool> IsLeaveTypeUnique(string name)
+    public async Task<LeaveRequest> GetLeaveRequestWithDetails(int id)
     {
-        return await _context.LeaveTypes.AnyAsync(q => q.Name == name);
+        var leaveRequest = await _context.LeaveRequests
+            .Include(q => q.LeaveType)
+            .FirstOrDefaultAsync(q => q.Id == id);
+
+        return leaveRequest;
+    }
+
+    public async Task<List<LeaveRequest>> GetLeaveRequestWithDetails()
+    {
+        var leaveRequests = await _context.LeaveRequests.Include(q => q.LeaveType)
+            .ToListAsync();
+
+        return leaveRequests;
+    }
+
+    public async Task<List<LeaveRequest>> GetLeaveRequestWithDetails(string userId)
+    {
+        var leaveRequests = await _context.LeaveRequests.Where(q => q.RequestingEmployeeId == userId)
+            .Include(p => p.LeaveType)
+            .ToListAsync();
+
+        return leaveRequests;
     }
 }
