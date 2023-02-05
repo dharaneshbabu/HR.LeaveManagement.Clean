@@ -23,4 +23,9 @@ public class LeaveTypeRespository : GenericRepository<LeaveType>, ILeaveTypeRepo
     {
         return await _context.LeaveTypes.AnyAsync(q => q.Name == name);
     }
+
+    public async Task<bool> LeaveTypeMustExist(int id)
+    {
+        return await _context.LeaveTypes.AnyAsync(q => q.Id == id);
+    }
 }
