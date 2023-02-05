@@ -13,7 +13,7 @@ public static class PersistenceServiceRegistration
         IConfiguration configuration)
     {
         services.AddDbContext<HrDatabaseContext>(options => 
-            options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionStrig")) // CONNECTION STRING
+            options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString")) // CONNECTION STRING
         );
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
