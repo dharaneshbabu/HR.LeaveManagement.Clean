@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.Application.Fetaures.LeaveAllocation.Commands.CreateLeaveAllocationType;
+using HR.LeaveManagement.Application.Fetaures.LeaveAllocation.Commands.UpdateLeaveAllocationType;
+using HR.LeaveManagement.Application.Fetaures.LeaveAllocation.Queries.GetAllLeaveAllocations;
 using HR.LeaveManagement.Application.Fetaures.LeaveAllocation.Queries.GetLeaveAllocationDetails;
 using HR.LeaveManagement.Domain;
 using System;
@@ -13,6 +16,9 @@ public class LeaveAllocationProfile : Profile
 {
 	public LeaveAllocationProfile()
 	{
+		CreateMap<LeaveAllocationDto, LeaveAllocation>().ReverseMap();
 		CreateMap<LeaveAllocation, LeaveAllocationDetailDto>();
+		CreateMap<CreateLeaveAllocationTypeCommand, LeaveAllocation>();
+		CreateMap<UpdateLeaveAllocationCommand, LeaveAllocation>();
 	}
 }

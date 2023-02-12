@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.Api.Controllers
 {
-    [Route("api/[leave-types]")]
+    [Route("api/[controller]")]
     [ApiController]
     [Authorize]
     public class LeaveTypesController : ControllerBase
