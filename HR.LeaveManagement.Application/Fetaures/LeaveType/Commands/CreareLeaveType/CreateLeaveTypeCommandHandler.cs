@@ -40,6 +40,5 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 
         // RETURN RECORD ID
         return leaveTypeToCreate.Id;
-        throw new NotImplementedException();
     }
 }
